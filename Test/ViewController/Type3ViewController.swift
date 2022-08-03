@@ -7,11 +7,13 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
-class Type3ViewController:UIViewController{
+class Type3ViewController:UIViewController {
     
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var tblView: UITableView!
     
     var param:String = ""
     
@@ -21,7 +23,27 @@ class Type3ViewController:UIViewController{
         super.viewDidLoad() // UIViewController에서 상속받았으므로 호출해줘야함
         self.label.text = param
         
+        self.tblView.delegate = self
+        self.tblView.dataSource = self
+        
+        
         self.btnClose.addTarget(self, action: #selector(self.btnCloseEvent), for: .touchUpInside)
+        
+        let url = "https://www.koreaexim.go.kr/site/program/financial/exchangeJSON"
+        var params:[String:String] = [:]
+        params["authkey"] = "82KIO0FjdMaJHfza02btosjpyvzvYNOz"
+        params["searchdate"] = "20220701"
+        params["data"] =  "AP01"
+        
+        AF.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).responseString(){ response in
+            if let error = response.error {
+                print("에러났는디")
+                print(error)
+            }
+            if let value = response.value {
+                print(value)
+            }
+        }
     }
 //    
     // action에서 @objc로 받는다.
@@ -62,3 +84,25 @@ class Type3ViewController:UIViewController{
     }
     
 }
+
+// Extension
+extension Type3ViewController:UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        <#code#>
+    }
+    
+}
+
+extension Type3ViewController:UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+}
+
+// 숙제 ViewController의 list를 Type3에서 보여주세요
+// 테이블뷰셀 3번 만들어서  그럼 Main 과 MainTwo의 데이터가 같아짐
