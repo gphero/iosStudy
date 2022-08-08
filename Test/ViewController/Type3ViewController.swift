@@ -16,6 +16,9 @@ class Type3ViewController:UIViewController {
     @IBOutlet weak var tblView: UITableView!
     
     var param:String = ""
+//    var listParams:[[String:String]] = [["":""]]
+    var listParams:[ApiResponse] = []
+    
     
     // 무적권있어야 하는 생명주기. ViewController 생성 시 한번 만 가장 먼저 호출됨.
     // 버튼연결은 여기서 한번만 해주면 됨
@@ -34,16 +37,34 @@ class Type3ViewController:UIViewController {
         params["authkey"] = "82KIO0FjdMaJHfza02btosjpyvzvYNOz"
         params["searchdate"] = "20220701"
         params["data"] =  "AP01"
+//
+//        AF.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).responseString(){ response in
+//            if let error = response.error {
+//                print("에러났는디")
+//                print(error)
+//            }
+//            if let value = response.value {
+//                print(value)
+//
+//            }
+//        }
         
-        AF.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).responseString(){ response in
-            if let error = response.error {
-                print("에러났는디")
-                print(error)
-            }
-            if let value = response.value {
-                print(value)
+        DispatchQueue.global().async {
+            AF.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).responseDecodable(of:[ApiResponse].self){ response in
+                if let error = response.error {
+                    print("에러났는디")
+                    print(error)
+                }
+                if let value = response.value {
+                    print(value)
+                    self.listParams = value
+                    
+                    self.tblView.reloadData() // 초기에 listParams.count 만큼 만들어 줬는데 리스트가 바뀌었으니 리로드 해야함 UI갱신은 메인쓰레드에서만 되고. 비동기통신은 서브에서 해야함.
+                    
+                }
             }
         }
+        
     }
 //    
     // action에서 @objc로 받는다.
@@ -88,21 +109,52 @@ class Type3ViewController:UIViewController {
 // Extension
 extension Type3ViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        print("dont touch me")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
     }
     
 }
 
 extension Type3ViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.listParams.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as? TableViewCell3 else {
+            return UITableViewCell() // guard는 실패시 = nill이면,  여기를 호출함
+        }
+        
+        cell.setLabel3Text(apiResponse: self.listParams[indexPath.row])
+        
+        return cell
+        
     }
     
 }
 
 // 숙제 ViewController의 list를 Type3에서 보여주세요
 // 테이블뷰셀 3번 만들어서  그럼 Main 과 MainTwo의 데이터가 같아짐
+// parameter 넘겨 받아서 하면 될듯
+
+struct ApiResponse {
+    let curUnit:String?
+    let curNm:String?
+    
+    // 숙제 매핑시켜오셈 구조체 안에서
+    enum CodingKeys: String, CodingKey {
+        case cur_unit, cur_nm
+    }
+}
+
+extension ApiResponse:Decodable{
+    init(from decoder: Decoder) throws{
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.curUnit = try container.decode(String.self, forKey: .cur_unit)
+        self.curNm = try container.decode(String.self, forKey: .cur_nm)
+    }
+}

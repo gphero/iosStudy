@@ -82,6 +82,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 nvc.modalPresentationStyle = .fullScreen
                 let viewController = nvc.topViewController as! Type3ViewController
                 viewController.param = "장기웅"
+//                viewController.listParams = self.list
                 self.present(nvc, animated: true)
             }
             
