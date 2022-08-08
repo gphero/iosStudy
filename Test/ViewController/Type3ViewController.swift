@@ -141,20 +141,22 @@ extension Type3ViewController:UITableViewDataSource {
 // 테이블뷰셀 3번 만들어서  그럼 Main 과 MainTwo의 데이터가 같아짐
 // parameter 넘겨 받아서 하면 될듯
 
-struct ApiResponse {
+struct ApiResponse:Codable {
     let curUnit:String?
     let curNm:String?
     
-    // 숙제 매핑시켜오셈 구조체 안에서
+    // 숙제 매핑시켜오셈 구조체 안에서.
     enum CodingKeys: String, CodingKey {
-        case cur_unit, cur_nm
+        case curUnit = "cur_unit"
+        case curNm = "cur_nm"
+        // 키가 같으면 아래처럼써주기만함
+        // case nameCd
     }
-}
-
-extension ApiResponse:Decodable{
     init(from decoder: Decoder) throws{
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.curUnit = try container.decode(String.self, forKey: .cur_unit)
-        self.curNm = try container.decode(String.self, forKey: .cur_nm)
+        self.curUnit = try container.decode(String.self, forKey: .curUnit)
+        self.curNm = try container.decode(String.self, forKey: .curNm)
+        // nameCd도 해줘야하는데 예시니까 안씀
     }
+
 }
