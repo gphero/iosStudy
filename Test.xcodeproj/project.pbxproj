@@ -11,6 +11,7 @@
 		AC235C142897CD5E00FBA9D0 /* MainTwo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC235C132897CD5E00FBA9D0 /* MainTwo.storyboard */; };
 		AC235C16289911BE00FBA9D0 /* Type3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC235C15289911BE00FBA9D0 /* Type3ViewController.swift */; };
 		AC2D30F4289BA41A0028715F /* TableViewCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D30F3289BA41A0028715F /* TableViewCell3.swift */; };
+		AC2D30FD28A102A70028715F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D30FC28A102A70028715F /* WebViewController.swift */; };
 		BD706405F160C66CDEE3E031 /* Pods_TestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595C9F0F643BB0A2BB343257 /* Pods_TestTests.framework */; };
 		CA25FC955721E7E773B8F432 /* Pods_Test_TestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2DAAE7E42EC4A501223964 /* Pods_Test_TestUITests.framework */; };
 		CD6ECA9D287D6E700032D1B7 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6ECA9C287D6E700032D1B7 /* TableViewCell.swift */; };
@@ -54,6 +55,7 @@
 		AC235C132897CD5E00FBA9D0 /* MainTwo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTwo.storyboard; sourceTree = "<group>"; };
 		AC235C15289911BE00FBA9D0 /* Type3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type3ViewController.swift; sourceTree = "<group>"; };
 		AC2D30F3289BA41A0028715F /* TableViewCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell3.swift; sourceTree = "<group>"; };
+		AC2D30FC28A102A70028715F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		BCC671A2348A198AE2963F11 /* Pods-Test-TestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test-TestUITests.release.xcconfig"; path = "Target Support Files/Pods-Test-TestUITests/Pods-Test-TestUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CC4E89C56AF3B5493977A546 /* Pods_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD6ECA9C287D6E700032D1B7 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				CDD58EE8287819B800FC03B9 /* ViewController.swift */,
 				CD8B9089289283770069310D /* Type2ViewController.swift */,
 				AC235C15289911BE00FBA9D0 /* Type3ViewController.swift */,
+				AC2D30FC28A102A70028715F /* WebViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD8B9086289134160069310D /* TableViewCell2.swift in Sources */,
+				AC2D30FD28A102A70028715F /* WebViewController.swift in Sources */,
 				AC235C16289911BE00FBA9D0 /* Type3ViewController.swift in Sources */,
 				CDD58EE9287819B800FC03B9 /* ViewController.swift in Sources */,
 				CD6ECA9D287D6E700032D1B7 /* TableViewCell.swift in Sources */,

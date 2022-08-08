@@ -128,6 +128,21 @@
             </objects>
             <point key="canvasLocation" x="337.68115942028987" y="89.732142857142847"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="trh-6w-JV4">
+            <objects>
+                <viewController storyboardIdentifier="webViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HQJ-Ae-mvi" customClass="WebViewController" customModule="Test" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QcC-J1-dhH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hfa-Mt-QCg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8az-fz-2bD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1296" y="90"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

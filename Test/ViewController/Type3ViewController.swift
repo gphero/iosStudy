@@ -109,7 +109,12 @@ class Type3ViewController:UIViewController {
 // Extension
 extension Type3ViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("dont touch me")
+        // 클릭시WebView로 넘김
+        let storyboard = UIStoryboard(name:"MainTwo", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "webViewController") as! WebViewController
+        viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen // 풀스크린으로 뷰컨트롤러를 넘겨 줌
+        // viewController.param = true // 뒤로가기 버튼 숨김
+        self.present(viewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
