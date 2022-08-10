@@ -10,24 +10,75 @@ import WebKit
 
 class WebViewController: UIViewController {
 
-    var wkWebview:WKWebView? // 선언만. viewDidLoad에서 초기화가 안될 수도 있으므로 optional
+    @IBOutlet weak var contentView: UIView!
+    
+    @IBOutlet weak var topBar: UIView!
+    
+    // 클로져: 변수에 함수를 담아둔다.
+    // lazy : 대용량 데이터를 담아서 사용할 때 메모리에 할당되지 않고, 실제 사용 시 메모리에 적재한다는 뜻
+    // 개발하면 UI관련된 변수가 많아지는데 사용될 때 초기화 시켜야 메모리 분배가 됨.
+    lazy var wkWebview = { [weak self] () -> WKWebView in
+        var webView = WKWebView()
+        
+        guard let self = self else {
+            return webView
+        }
+        
+        let contentController = WKUserContentController()
+        contentController.add(self, name: "handler")
+        
+        let config = WKWebViewConfiguration()
+        config.userContentController = contentController
+        config.applicationNameForUserAgent = "/iphone"
+        
+        return WKWebView(frame: self.contentView.frame, configuration: config)
+    }()
+    
+    lazy var btnClose = { [weak self]() -> UIButton in // 반환형
+        var button = UIButton()
+        
+        guard let self = self else {
+            return button
+        }
+        
+        button.setTitle("장기웅", for: .normal)
+        button.backgroundColor = .green
+        button.setTitleColor(.black, for: .normal)
+        button.frame = CGRect(x: self.topBar.bounds.origin.x, y: self.topBar.bounds.origin.x, width: self.topBar.bounds.height, height: self.topBar.bounds.height)
+        
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // frame : 부모기준 좌표.
         // bounce : 자신 기준 좌표.
         // view = view Controller 를 의미함
-        self.wkWebview = WKWebView(frame: self.view.frame)
-        self.view.addSubview(self.wkWebview!)
         
         let url = URL(string: "https://www.naver.com")
         let requestUrl = URLRequest(url: url!)
         
-        self.wkWebview!.load(requestUrl)
+        self.wkWebview  .load(requestUrl)
         // Do any additional setup after loading the view.
+        
+        
+        self.view.addSubview(self.wkWebview)
+        self.view.addSubview(self.btnClose)
+        
+        
+        
+        self.btnClose.addTarget(self, action: #selector(self.btnCloseEvent), for: .touchUpInside)
+        self.btnClose.translatesAutoresizingMaskIntoConstraints = false //
+        
+        self.btnClose.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 100).isActive = true
+        self.btnClose.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 100).isActive = true
+        self.btnClose.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -100).isActive = true
+        
     }
     
-
+    @objc func btnCloseEvent(){
+        self.dismiss(animated: true)
+    }
     /*
     // MARK: - Navigation
 
@@ -39,3 +90,20 @@ class WebViewController: UIViewController {
     */
 
 }
+
+extension WebViewController: WKScriptMessageHandler {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        // 클로져에서 만든 브릿지와 통신 하기 위함
+        if message.name == "handler" {
+            
+        }
+            
+    }
+    
+    
+}
+
+// ui 오토레이아웃 아래 3가지 활용해서 버튼 오토레이아웃 맞춰오세요
+// 앤클 <- 앤 클로 헤오세요 NSLayoutAnchor?
+// 비주얼포맷랭귀지
+// 컨텐츠어쩌고 ? 있는데

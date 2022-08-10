@@ -135,13 +135,38 @@
                     <view key="view" contentMode="scaleToFill" id="QcC-J1-dhH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fl2-mS-iTj">
+                                <rect key="frame" x="20" y="180" width="374" height="682"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cHG-tk-3sK">
+                                <rect key="frame" x="0.0" y="58" width="414" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="hfa-Mt-QCg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hfa-Mt-QCg" firstAttribute="bottom" secondItem="cHG-tk-3sK" secondAttribute="bottom" constant="758" id="4bL-V7-fff"/>
+                            <constraint firstItem="Fl2-mS-iTj" firstAttribute="leading" secondItem="QcC-J1-dhH" secondAttribute="leadingMargin" id="84E-An-ORJ"/>
+                            <constraint firstItem="cHG-tk-3sK" firstAttribute="top" secondItem="Fl2-mS-iTj" secondAttribute="top" id="BMp-3h-mMt"/>
+                            <constraint firstItem="cHG-tk-3sK" firstAttribute="top" secondItem="hfa-Mt-QCg" secondAttribute="top" id="BXG-l2-e9Q"/>
+                            <constraint firstItem="cHG-tk-3sK" firstAttribute="trailing" secondItem="hfa-Mt-QCg" secondAttribute="trailing" id="QiI-ea-fmB"/>
+                            <constraint firstItem="Fl2-mS-iTj" firstAttribute="top" secondItem="cHG-tk-3sK" secondAttribute="bottom" constant="-60" id="TXn-7r-B7L"/>
+                            <constraint firstItem="cHG-tk-3sK" firstAttribute="leading" secondItem="hfa-Mt-QCg" secondAttribute="leading" id="YeQ-1k-9FP"/>
+                            <constraint firstItem="cHG-tk-3sK" firstAttribute="centerX" secondItem="Fl2-mS-iTj" secondAttribute="centerX" id="im8-4W-2xe"/>
+                            <constraint firstItem="Fl2-mS-iTj" firstAttribute="bottom" secondItem="hfa-Mt-QCg" secondAttribute="bottom" id="ljt-hX-soI"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentView" destination="Fl2-mS-iTj" id="c2N-i4-uWi"/>
+                        <outlet property="topBar" destination="cHG-tk-3sK" id="mZe-lN-vYC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8az-fz-2bD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1296" y="90"/>
+            <point key="canvasLocation" x="1295.6521739130435" y="89.732142857142847"/>
         </scene>
     </scenes>
     <resources>
