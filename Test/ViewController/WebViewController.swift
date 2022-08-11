@@ -52,28 +52,25 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // frame : 부모기준 좌표.
-        // bounce : 자신 기준 좌표.
+        // bounds : 자신 기준 좌표.
         // view = view Controller 를 의미함
         
         let url = URL(string: "https://www.naver.com")
         let requestUrl = URLRequest(url: url!)
         
-        self.wkWebview  .load(requestUrl)
+        self.wkWebview.load(requestUrl)
         // Do any additional setup after loading the view.
         
-        
-        self.view.addSubview(self.wkWebview)
-        self.view.addSubview(self.btnClose)
-        
-        
+        self.contentView.addSubview(self.wkWebview)
+        self.topBar.addSubview(self.btnClose)
         
         self.btnClose.addTarget(self, action: #selector(self.btnCloseEvent), for: .touchUpInside)
-        self.btnClose.translatesAutoresizingMaskIntoConstraints = false //
+        self.wkWebview.translatesAutoresizingMaskIntoConstraints = false //
         
-        self.btnClose.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 100).isActive = true
-        self.btnClose.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 100).isActive = true
-        self.btnClose.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -100).isActive = true
-        
+        self.wkWebview.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0).isActive = true
+        self.wkWebview.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0).isActive = true
+        self.wkWebview.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0).isActive = true
+        self.wkWebview.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0).isActive = true
     }
     
     @objc func btnCloseEvent(){

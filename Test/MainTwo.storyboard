@@ -136,27 +136,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fl2-mS-iTj">
-                                <rect key="frame" x="20" y="180" width="374" height="682"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fl2-mS-iTj">
+                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cHG-tk-3sK">
-                                <rect key="frame" x="0.0" y="58" width="414" height="60"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHG-tk-3sK">
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="q2O-gQ-6lW"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hfa-Mt-QCg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hfa-Mt-QCg" firstAttribute="bottom" secondItem="cHG-tk-3sK" secondAttribute="bottom" constant="758" id="4bL-V7-fff"/>
-                            <constraint firstItem="Fl2-mS-iTj" firstAttribute="leading" secondItem="QcC-J1-dhH" secondAttribute="leadingMargin" id="84E-An-ORJ"/>
-                            <constraint firstItem="cHG-tk-3sK" firstAttribute="top" secondItem="Fl2-mS-iTj" secondAttribute="top" id="BMp-3h-mMt"/>
-                            <constraint firstItem="cHG-tk-3sK" firstAttribute="top" secondItem="hfa-Mt-QCg" secondAttribute="top" id="BXG-l2-e9Q"/>
-                            <constraint firstItem="cHG-tk-3sK" firstAttribute="trailing" secondItem="hfa-Mt-QCg" secondAttribute="trailing" id="QiI-ea-fmB"/>
-                            <constraint firstItem="Fl2-mS-iTj" firstAttribute="top" secondItem="cHG-tk-3sK" secondAttribute="bottom" constant="-60" id="TXn-7r-B7L"/>
-                            <constraint firstItem="cHG-tk-3sK" firstAttribute="leading" secondItem="hfa-Mt-QCg" secondAttribute="leading" id="YeQ-1k-9FP"/>
-                            <constraint firstItem="cHG-tk-3sK" firstAttribute="centerX" secondItem="Fl2-mS-iTj" secondAttribute="centerX" id="im8-4W-2xe"/>
-                            <constraint firstItem="Fl2-mS-iTj" firstAttribute="bottom" secondItem="hfa-Mt-QCg" secondAttribute="bottom" id="ljt-hX-soI"/>
+                            <constraint firstItem="hfa-Mt-QCg" firstAttribute="trailing" secondItem="cHG-tk-3sK" secondAttribute="trailing" id="4xe-mQ-J2z"/>
+                            <constraint firstItem="cHG-tk-3sK" firstAttribute="top" secondItem="hfa-Mt-QCg" secondAttribute="top" id="azL-7o-utO"/>
+                            <constraint firstItem="hfa-Mt-QCg" firstAttribute="bottom" secondItem="Fl2-mS-iTj" secondAttribute="bottom" id="cQd-3T-LEd"/>
+                            <constraint firstItem="cHG-tk-3sK" firstAttribute="leading" secondItem="hfa-Mt-QCg" secondAttribute="leading" id="r64-NE-dFP"/>
+                            <constraint firstItem="Fl2-mS-iTj" firstAttribute="leading" secondItem="hfa-Mt-QCg" secondAttribute="leading" id="rkv-Ku-t5p"/>
+                            <constraint firstItem="hfa-Mt-QCg" firstAttribute="trailing" secondItem="Fl2-mS-iTj" secondAttribute="trailing" id="sOM-Zw-sPk"/>
+                            <constraint firstItem="Fl2-mS-iTj" firstAttribute="top" secondItem="cHG-tk-3sK" secondAttribute="bottom" id="uqA-JQ-HOm"/>
                         </constraints>
                     </view>
                     <connections>
