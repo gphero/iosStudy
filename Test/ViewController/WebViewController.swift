@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import SnapKit
 
 class WebViewController: UIViewController {
 
@@ -63,16 +64,22 @@ class WebViewController: UIViewController {
         
         self.contentView.addSubview(self.wkWebview)
         self.topBar.addSubview(self.btnClose)
-        // wkWebView 버그로
+        
         self.btnClose.addTarget(self, action: #selector(self.btnCloseEvent), for: .touchUpInside)
         
         // 초기 세팅 이후 UI 변동 시 제약조건을 풀어야함.
-        self.wkWebview.translatesAutoresizingMaskIntoConstraints = false //오토레이아웃 제약조건을 풀어 줌.
-        // Anchor
-        self.wkWebview.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0).isActive = true
-        self.wkWebview.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0).isActive = true
-        self.wkWebview.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0).isActive = true
-        self.wkWebview.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0).isActive = true
+//        self.wkWebview.translatesAutoresizingMaskIntoConstraints = false //오토레이아웃 제약조건을 풀어 줌.
+//        // Anchor
+//        self.wkWebview.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0).isActive = true
+//        self.wkWebview.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0).isActive = true
+//        self.wkWebview.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0).isActive = true
+//        self.wkWebview.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0).isActive = true
+        
+        //제약 조건 다 해주기 짜증나니까 SnapKit 쓴다. cocoapods로 설치했음
+        self.wkWebview.snp.makeConstraints { make in
+            // make가 wkWebview 다
+            make.edges.equalToSuperview().offset(0) // 자기 부모와 엣지. 사방을 다 맞춤.
+        }
     }
     
     @objc func btnCloseEvent(){
