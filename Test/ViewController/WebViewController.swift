@@ -63,10 +63,12 @@ class WebViewController: UIViewController {
         
         self.contentView.addSubview(self.wkWebview)
         self.topBar.addSubview(self.btnClose)
-        
+        // wkWebView 버그로
         self.btnClose.addTarget(self, action: #selector(self.btnCloseEvent), for: .touchUpInside)
-        self.wkWebview.translatesAutoresizingMaskIntoConstraints = false //
         
+        // 초기 세팅 이후 UI 변동 시 제약조건을 풀어야함.
+        self.wkWebview.translatesAutoresizingMaskIntoConstraints = false //오토레이아웃 제약조건을 풀어 줌.
+        // Anchor
         self.wkWebview.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0).isActive = true
         self.wkWebview.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0).isActive = true
         self.wkWebview.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0).isActive = true
